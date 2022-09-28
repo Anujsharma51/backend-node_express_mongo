@@ -1,12 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Todo from "./Todo";
-import AllRouter from "./components/AllRouter";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <AllRouter />
+      <HomePage />
     </div>
   );
 }

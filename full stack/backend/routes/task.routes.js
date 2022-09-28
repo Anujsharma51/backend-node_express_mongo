@@ -1,10 +1,10 @@
 const express = require("express");
-const { UserModel } = require("../model/user.js");
+const { taskModel } = require("../model/task.js");
 
 const authRouter = express.Router();
 
 authRouter.post("/signup", async (req, res) => {
-  const signupdata = await new UserModel(req.body);
+  const signupdata = await new taskModel(req.body);
 
   signupdata.save((err, data) => {
     if (err) {
@@ -14,13 +14,11 @@ authRouter.post("/signup", async (req, res) => {
   });
 });
 authRouter.post("/login", async (req, res) => {
-  const logindata = await UserModel.find(req.body);
-  console.log("logindata:", logindata);
+  const logindata = await taskModel.find(req.body);
 
   if (logindata.length == 0) {
     res.send("wrong credentials");
   } else {
-    // console.log("logindata:", logindata);
     res.send(logindata);
   }
 });
